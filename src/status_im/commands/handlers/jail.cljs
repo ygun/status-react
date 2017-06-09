@@ -14,7 +14,8 @@
             [status-im.data-store.local-storage :as local-storage]))
 
 (defn command-handler!
-  [_ [chat-id
+  [{:keys [current-account-id] :as db}
+   [chat-id
       {:keys [command-message] :as parameters}
       {:keys [result error]}]]
   (let [{:keys [context returned]} result
@@ -22,7 +23,10 @@
     (cond
       handler-error
       (when-let [markup (:markup handler-error)]
-        (dispatch [:set-chat-ui-props {:validation-messages (cu/generate-hiccup markup)}]))
+        (dispatch [:set-chat-ui-props
+                   {:validation-messages (cu/generate-hiccup
+                                           {:markup markup
+                                            :debug? (get-in db [:accounts current-account-id :debug?])})}]))
 
       result
       (let [command'    (assoc command-message :handler-data returned)

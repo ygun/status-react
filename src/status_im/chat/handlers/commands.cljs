@@ -10,7 +10,7 @@
 
 (handlers/register-handler :request-command-data
   (handlers/side-effect!
-    (fn [{:keys [contacts current-account-id] :as db}
+    (fn [{:keys [contacts current-account-id current-account-id] :as db}
          [_ {{:keys [command params content-command type]} :content
              :keys [message-id chat-id on-requested jail-id] :as message} data-type]]
       (let [jail-id (or jail-id chat-id)]
@@ -30,7 +30,12 @@
                                              i18n/delimeters)}
                 callback #(let [result (get-in % [:result :returned])
                                 result (if (:markup result)
-                                         (update result :markup cu/generate-hiccup)
+                                         (update result
+                                                 :markup
+                                                 (fn [markup]
+                                                   (cu/generate-hiccup
+                                                    {:markup markup
+                                                     :debug? (get-in db [:accounts current-account-id :debug?])})))
                                          result)]
                             (dispatch [:set-in [:message-data data-type message-id] result])
                             (when on-requested (on-requested result)))]

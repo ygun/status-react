@@ -1,6 +1,7 @@
 (ns status-im.commands.utils
   (:require [clojure.set :as set]
             [clojure.walk :as w]
+            [reagent.impl.component :refer [wrap-render reagent-class? comp-name reagent-component? fn-to-class]]
             [status-im.components.react :refer [text
                                                 scroll-view
                                                 view
@@ -12,7 +13,10 @@
             [status-im.chat.views.input.validation-messages :as chat-validation-messages]
             [re-frame.core :refer [dispatch trim-v debug]]
             [status-im.utils.handlers :refer [register-handler]]
-            [taoensso.timbre :as log]))
+            [taoensso.timbre :as log]
+            [status-im.utils.utils :as u]
+            [reagent.core :as r]
+            [reagent.impl.template :as tmpl]))
 
 (defn json->clj [json]
   (when-not (= json "undefined")
@@ -43,25 +47,39 @@
         evs (set/intersection ks events)]
     (reduce #(update %1 %2 wrap-event) m evs)))
 
-(defn generate-hiccup
-  ([markup]
-   (generate-hiccup markup {}))
-  ([markup data]
-   (w/prewalk
-     (fn [el]
-       (cond
+(declare ^:dynamic *current-component*)
 
-         (and (vector? el) (= "subscribe" (first el)))
-         (let [path (mapv keyword (second el))]
-           (get-in data path))
+(defn validate-hiccup [c]
+  (binding [*current-component* c]
+    (try
+      (let [res (wrap-render c)]
+        true)
+      (catch js/Error e (do
+                          (u/show-popup "Error rendering component" (.-message e))
+                          false)))))
 
-         (and (vector? el) (string? (first el)))
-         (-> el
-             (update 0 get-element)
-             (update 1 check-events))
+(defn generate-hiccup [{:keys [markup data debug?]}]
+  (let [component (w/prewalk
+                    (fn [el]
+                      (cond
 
-         :esle el))
-     markup)))
+                        (and (vector? el) (= "subscribe" (first el)))
+                        (let [path (mapv keyword (second el))]
+                          (get-in data path))
+
+                        (and (vector? el) (string? (first el)))
+                        (-> el
+                            (update 0 get-element)
+                            (update 1 check-events))
+
+                        :esle el))
+                    markup)]
+    (if debug?
+      (let [can-be-rendered? (atom true)
+            component' (r/create-class {:component-will-mount #(reset! can-be-rendered? (validate-hiccup %))
+                                        :render #(if @can-be-rendered? component [view])})]
+        component')
+      component)))
 
 (defn reg-handler
   ([name handler] (reg-handler name nil handler))

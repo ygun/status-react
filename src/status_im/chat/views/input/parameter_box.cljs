@@ -14,10 +14,13 @@
             [clojure.string :as str]))
 
 (defview parameter-box-container []
-  [parameter-box [:chat-parameter-box]
+  [current-account [:get-current-account]
+   parameter-box [:chat-parameter-box]
    bot-db [:current-bot-db]]
   (when (:hiccup parameter-box)
-    (command-utils/generate-hiccup (:hiccup parameter-box) bot-db)))
+    (command-utils/generate-hiccup {:markup (:hiccup parameter-box)
+                                    :data   bot-db
+                                    :debug? (:debug? current-account)})))
 
 (defview parameter-box-view []
   [show-parameter-box? [:show-parameter-box?]]
