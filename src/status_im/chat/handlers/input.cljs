@@ -277,9 +277,7 @@
             (let [text (get-in db [:chats chat-id :input-text])]
               (dispatch [:set-chat-ui-props {:sending-in-progress? false}])
               (when-not (input-model/text-ends-with-space? text)
-                (dispatch [:set-chat-input-text (str text const/spacing-char)]))
-              (when seq-command?
-                (dispatch [:load-chat-parameter-box (:command chat-command)]))))
+                (dispatch [:set-chat-input-text (str text const/spacing-char)]))))
           (dispatch [::send-message nil chat-id]))))))
 
 (handlers/register-handler

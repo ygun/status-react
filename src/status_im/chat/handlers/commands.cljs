@@ -10,7 +10,7 @@
 
 (handlers/register-handler :request-command-data
   (handlers/side-effect!
-    (fn [{:keys [contacts current-account-id current-account-id] :as db}
+    (fn [{:keys [contacts current-account-id] :as db}
          [_ {{:keys [command params content-command type]} :content
              :keys [message-id chat-id on-requested jail-id] :as message} data-type]]
       (let [jail-id (or jail-id chat-id)]

@@ -1,7 +1,7 @@
 (ns status-im.commands.utils
   (:require [clojure.set :as set]
             [clojure.walk :as w]
-            [reagent.impl.component :refer [wrap-render reagent-class? comp-name reagent-component? fn-to-class]]
+            [reagent.impl.component :refer [wrap-render]]
             [status-im.components.react :refer [text
                                                 scroll-view
                                                 view
@@ -11,12 +11,10 @@
                                                 touchable-highlight]]
             [status-im.chat.views.input.web-view :as chat-web-view]
             [status-im.chat.views.input.validation-messages :as chat-validation-messages]
-            [re-frame.core :refer [dispatch trim-v debug]]
+            [re-frame.core :refer [dispatch trim-v]]
             [status-im.utils.handlers :refer [register-handler]]
-            [taoensso.timbre :as log]
             [status-im.utils.utils :as u]
-            [reagent.core :as r]
-            [reagent.impl.template :as tmpl]))
+            [reagent.core :as r]))
 
 (defn json->clj [json]
   (when-not (= json "undefined")
@@ -74,6 +72,7 @@
 
                         :esle el))
                     markup)]
+    (dispatch [:set-in [:debug :debug?] debug?])
     (if debug?
       (let [can-be-rendered? (atom true)
             component' (r/create-class {:component-will-mount #(reset! can-be-rendered? (validate-hiccup %))
