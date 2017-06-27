@@ -103,25 +103,41 @@ function call(pathStr, paramsStr) {
     return JSON.stringify(result);
 }
 
+function view(options, elements) {
+    return ['view', options].concat(elements);
+}
+
 function text(options, s) {
     s = Array.isArray(s) ? s : [s];
     return ['text', options].concat(s);
 }
 
-function view(options, elements) {
-    return ['view', options].concat(elements);
-}
-
-function slider(options) {
-    return ['slider', options];
+function textInput(options) {
+    return ['text-input', options];
 }
 
 function image(options) {
     return ['image', options];
 }
 
+function qrCode(options) {
+    return ['qr-code', options];
+}
+
+function linking(options) {
+    return ['linking', options];
+}
+
+function slider(options) {
+    return ['slider', options];
+}
+
 function touchable(options, element) {
     return ['touchable', options, element];
+}
+
+function activityIndicator(options) {
+    return ['activity-indicator', options];
 }
 
 function scrollView(options, elements) {
@@ -199,9 +215,13 @@ var status = {
     components: {
         view: view,
         text: text,
-        slider: slider,
+        textInput: textInput,
         image: image,
+        qrCode: qrCode,
+        linking: linking,
+        slider: slider,
         touchable: touchable,
+        activityIndicator: activityIndicator,
         scrollView: scrollView,
         webView: webView,
         validationMessage: validationMessage,
