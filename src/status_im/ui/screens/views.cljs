@@ -41,6 +41,8 @@
             [status-im.ui.screens.profile.edit.views :refer [edit-my-profile]]
             [status-im.ui.screens.profile.photo-capture.views :refer [profile-photo-capture]]
             [status-im.ui.screens.profile.qr-code.views :refer [qr-code-view]]
+
+            [status-im.ui.screens.wallet.asset-list.views :refer [asset-list-screen]]
             [status-im.ui.screens.wallet.send.views :refer [send-transaction]]
             [status-im.ui.screens.wallet.history.views :refer [wallet-transactions]]))
 
@@ -61,6 +63,7 @@
                           :wallet-transactions-unsigned wallet-transactions
                           :wallet-transactions-history wallet-transactions
                           :wallet main-tabs
+                          :wallet-asset-list asset-list-screen
                           :wallet-send-transaction send-transaction
                           :discover main-tabs
                           :discover-search-results discover-search-results
