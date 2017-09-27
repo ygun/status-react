@@ -42,7 +42,6 @@
 		74242ACAF37A48D0BFACDE82 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2756305FAFF144C4A6B0A039 /* Zocial.ttf */; };
 		82E689BAF9FB43C8AC6FF1CA /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEB0E2659D1A4F5FA842057A /* EvilIcons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		92334DE61F7C02AB00D2F35A /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92334DE51F7C02AB00D2F35A /* Instabug.framework */; };
 		92334DE71F7C02F500D2F35A /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92334DE51F7C02AB00D2F35A /* Instabug.framework */; };
 		92334DE81F7C02F500D2F35A /* Instabug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92334DE51F7C02AB00D2F35A /* Instabug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		925C1F471F7B73B20063DFA0 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925C1F401F7B73B20063DFA0 /* FirebaseCore.framework */; };
@@ -591,6 +590,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92334DE71F7C02F500D2F35A /* Instabug.framework in Frameworks */,
 				B2DEA0D01E49E33300FA28D6 /* libRCTHttpServer.a in Frameworks */,
 				925C1F481F7B73B20063DFA0 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				9EE89E271E03FCB7007D3C25 /* libSplashScreen.a in Frameworks */,
@@ -633,7 +633,6 @@
 				3E15DFEC1F6F4D7CAE088F49 /* libTcpSockets.a in Frameworks */,
 				E0AD9E8F495A4907B65104BF /* libRCTImageResizer.a in Frameworks */,
 				9E54D6001F17A5DB009F0C16 /* libTestFairy.a in Frameworks */,
-				92334DE61F7C02AB00D2F35A /* Instabug.framework in Frameworks */,
 				5F8585D411844E5981B94F40 /* libRNInstabug.a in Frameworks */,
 				925C1F491F7B73B20063DFA0 /* FirebaseInstanceID.framework in Frameworks */,
 				9EE470511ED0079E0048FD10 /* Mapbox.framework in Frameworks */,
@@ -642,7 +641,6 @@
 				B957A49EB0DE44D9A31CAF2D /* libRNSVG.a in Frameworks */,
 				5974D2035B8B47E0946B63B6 /* libRNFIRMessaging.a in Frameworks */,
 				EE99697599F14E309CD2D44C /* libRCTMapboxGL.a in Frameworks */,
-				92334DE71F7C02F500D2F35A /* Instabug.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,6 +1141,7 @@
 				20B6B6891D92C42700CC5C6A /* Embed Frameworks */,
 				E3914A731DF919ED00EBB515 /* Run Script */,
 				9EE470531ED007A80048FD10 /* ShellScript */,
+				92334DEB1F7C048400D2F35A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1783,6 +1782,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		92334DEB1F7C048400D2F35A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework/Instabug.bundle/strip-frameworks.sh\"\n";
 		};
 		967469AF8BA27D5CEC47B13C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

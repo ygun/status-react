@@ -2,7 +2,7 @@
 #import "React/RCTBridge.h"
 #import "React/RCTEventDispatcher.h"
 #import <Statusgo/Statusgo.h>
-@import Instabug;
+#import <Instabug/Instabug.h>
 
 @interface NSDictionary (BVJSONString)
 -(NSString*) bv_jsonStringWithPrettyPrint:(BOOL) prettyPrint;

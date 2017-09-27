@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		206C9F3E1D474E910063E3E6 /* RCTStatus.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 206C9F3D1D474E910063E3E6 /* RCTStatus.h */; };
 		206C9F401D474E910063E3E6 /* RCTStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 206C9F3F1D474E910063E3E6 /* RCTStatus.m */; };
+		92334DEA1F7C041E00D2F35A /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92334DE91F7C041E00D2F35A /* Instabug.framework */; };
+		92334DEF1F7C067300D2F35A /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92334DEE1F7C067300D2F35A /* Instabug.framework */; };
 		CE4E31B11D86951A0033ED64 /* Statusgo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4E31B01D86951A0033ED64 /* Statusgo.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,8 +32,10 @@
 		206C9F3A1D474E910063E3E6 /* libRCTStatus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTStatus.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		206C9F3D1D474E910063E3E6 /* RCTStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTStatus.h; sourceTree = "<group>"; };
 		206C9F3F1D474E910063E3E6 /* RCTStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTStatus.m; sourceTree = "<group>"; };
+		92334DE91F7C041E00D2F35A /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Instabug.framework; path = ../../../../ios/Instabug.framework; sourceTree = "<group>"; };
+		92334DEE1F7C067300D2F35A /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Instabug.framework; path = "/Users/oskarth/git/status-react/modules/react-native-status/ios/RCTStatus/Instabug.framework"; sourceTree = "<absolute>"; };
 		9E3F8AF21ED2CCBD0016D874 /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Instabug.framework; path = ../../../../ios/Pods/Instabug/Instabug.framework; sourceTree = "<group>"; };
-		CE4E31B01D86951A0033ED64 /* Statusgo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Statusgo.framework; sourceTree = "<group>"; };
+		CE4E31B01D86951A0033ED64 /* Statusgo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Statusgo.framework; path = "/Users/oskarth/git/status-react/modules/react-native-status/ios/RCTStatus/Statusgo.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92334DEF1F7C067300D2F35A /* Instabug.framework in Frameworks */,
+				92334DEA1F7C041E00D2F35A /* Instabug.framework in Frameworks */,
 				CE4E31B11D86951A0033ED64 /* Statusgo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +55,7 @@
 		206C9F311D474E910063E3E6 = {
 			isa = PBXGroup;
 			children = (
+				92334DEE1F7C067300D2F35A /* Instabug.framework */,
 				CE4E31B01D86951A0033ED64 /* Statusgo.framework */,
 				206C9F3C1D474E910063E3E6 /* Status */,
 				206C9F3B1D474E910063E3E6 /* Products */,
@@ -76,6 +83,7 @@
 		9E3F8AF11ED2CCBD0016D874 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92334DE91F7C041E00D2F35A /* Instabug.framework */,
 				9E3F8AF21ED2CCBD0016D874 /* Instabug.framework */,
 			);
 			name = Frameworks;
