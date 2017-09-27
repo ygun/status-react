@@ -42,6 +42,9 @@
 		74242ACAF37A48D0BFACDE82 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2756305FAFF144C4A6B0A039 /* Zocial.ttf */; };
 		82E689BAF9FB43C8AC6FF1CA /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEB0E2659D1A4F5FA842057A /* EvilIcons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		92334DE61F7C02AB00D2F35A /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92334DE51F7C02AB00D2F35A /* Instabug.framework */; };
+		92334DE71F7C02F500D2F35A /* Instabug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92334DE51F7C02AB00D2F35A /* Instabug.framework */; };
+		92334DE81F7C02F500D2F35A /* Instabug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92334DE51F7C02AB00D2F35A /* Instabug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		925C1F471F7B73B20063DFA0 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925C1F401F7B73B20063DFA0 /* FirebaseCore.framework */; };
 		925C1F481F7B73B20063DFA0 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925C1F411F7B73B20063DFA0 /* FirebaseCoreDiagnostics.framework */; };
 		925C1F491F7B73B20063DFA0 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925C1F421F7B73B20063DFA0 /* FirebaseInstanceID.framework */; };
@@ -463,6 +466,7 @@
 				20B6B6851D92C42600CC5C6A /* RSKImageCropper.framework in Embed Frameworks */,
 				20B6B6881D92C42600CC5C6A /* QBImagePicker.framework in Embed Frameworks */,
 				9EE470521ED0079E0048FD10 /* Mapbox.framework in Embed Frameworks */,
+				92334DE81F7C02F500D2F35A /* Instabug.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +534,7 @@
 		8AE71EE8751F4652B13BFE83 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		8B9A886A2CB448B1ABA0EB62 /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		922C4CA61F4D5F8B0033C753 /* StatusIm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = StatusIm.entitlements; path = StatusIm/StatusIm.entitlements; sourceTree = "<group>"; };
+		92334DE51F7C02AB00D2F35A /* Instabug.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Instabug.framework; sourceTree = "<group>"; };
 		925C1F401F7B73B20063DFA0 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
 		925C1F411F7B73B20063DFA0 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
 		925C1F421F7B73B20063DFA0 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
@@ -628,6 +633,7 @@
 				3E15DFEC1F6F4D7CAE088F49 /* libTcpSockets.a in Frameworks */,
 				E0AD9E8F495A4907B65104BF /* libRCTImageResizer.a in Frameworks */,
 				9E54D6001F17A5DB009F0C16 /* libTestFairy.a in Frameworks */,
+				92334DE61F7C02AB00D2F35A /* Instabug.framework in Frameworks */,
 				5F8585D411844E5981B94F40 /* libRNInstabug.a in Frameworks */,
 				925C1F491F7B73B20063DFA0 /* FirebaseInstanceID.framework in Frameworks */,
 				9EE470511ED0079E0048FD10 /* Mapbox.framework in Frameworks */,
@@ -636,6 +642,7 @@
 				B957A49EB0DE44D9A31CAF2D /* libRNSVG.a in Frameworks */,
 				5974D2035B8B47E0946B63B6 /* libRNFIRMessaging.a in Frameworks */,
 				EE99697599F14E309CD2D44C /* libRCTMapboxGL.a in Frameworks */,
+				92334DE71F7C02F500D2F35A /* Instabug.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1048,6 +1055,7 @@
 		A97BA941B2FB44B4B66EE6D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92334DE51F7C02AB00D2F35A /* Instabug.framework */,
 				925C1F7F1F7B73C00063DFA0 /* FirebaseMessaging.framework */,
 				925C1F801F7B73C00063DFA0 /* Protobuf.framework */,
 				925C1F401F7B73B20063DFA0 /* FirebaseCore.framework */,
