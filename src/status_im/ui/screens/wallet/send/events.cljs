@@ -37,22 +37,25 @@
 
 ;;;; Handlers
 
-(defn choose-address-and-name [db address name]
-  (update db :wallet/send-transaction assoc :to-address address :to-name name))
+(defn update-address-and-name [all address name]
+  (update-in all [:db :wallet/send-transaction] assoc :to-address address :to-name name))
 
 (handlers/register-handler-fx
   :choose-recipient
-  (fn [{:keys [db]} [_ address name]]
-    (let [{:keys [view-id]} db]
-      (cond-> {:db (choose-address-and-name db address name)}
-        (= :choose-recipient view-id) (assoc :dispatch [:navigate-back])))))
+  (fn [{{:keys [web3] :as db} :db} [_ address name]]
+    (let [{:keys [view-id]} db
+          valid-address? (.isAddress web3 address)]
+      (cond-> {:db db}
+        (= :choose-recipient view-id) (assoc :dispatch [:navigate-back])
+        valid-address? (update-address-and-name address name)
+        (not valid-address?) (assoc :show-error (i18n/label :t/wallet-invalid-address))))))
 
 (handlers/register-handler-fx
   :wallet-open-send-transaction
-  (fn [{db :db} [_ address name]]
-    {:db         (choose-address-and-name db address name)
-     :dispatch-n [[:navigate-back]
-                  [:navigate-back]]}))
+  (fn [cofx [_ address name]]
+    (assoc (update-address-and-name cofx address name)
+      :dispatch-n [[:navigate-back]
+                   [:navigate-back]])))
 
 (handlers/register-handler-fx
   :wallet-validate-amount
